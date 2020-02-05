@@ -30,15 +30,17 @@ WORKDIR /home/ife
 
 RUN wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/jepegit/cellpy/master/environment.yml
 
-RUN conda config --add channels jepegit
+#RUN conda config --add channels jepegit
 #RUN conda config --add channels conda-forge
 
 RUN conda env create -f environment.yml
 ENV PATH /home/ife/.local/bin/:$PATH
 RUN echo "source activate cellpy" > ~/.bashrc
 RUN /bin/bash -c "source activate cellpy && pip install --pre cellpy"
+
+
 CMD [ "/bin/bash" ]
-#RUN conda create -n cellpy python=3.7 pandas
+
 
 
 
